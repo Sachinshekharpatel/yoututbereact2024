@@ -12,6 +12,11 @@ const videoSlice = createSlice({
       state.searchVideos = action.payload
 
       // console.log(action.payload)
+    },
+    FilterVideosFunction: (state, action) => {
+      state.searchVideos = action.payload
+
+      // console.log(action.payload)
     }
   }
 })

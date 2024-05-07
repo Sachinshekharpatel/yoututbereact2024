@@ -23,7 +23,7 @@ const Navbar = () => {
     const searchQuery = searchRef.current.value;
     const apiKey = "AIzaSyCmPDIvI1U_KaOkhylVk4bTIStAmwquxwk";
 
-    const requestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=21&q=${searchQuery}&type=video&key=${apiKey}`;
+    const requestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=21&q=${searchQuery}&type=video&videoDuration=long&key=${apiKey}`;
 
     axios
       .get(requestUrl)

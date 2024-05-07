@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { searchVideo } from "../reduxreducer/reduxreducer";
 import { useSelector } from "react-redux";
+import "./homepage.css";
+import ButtonBelowNavbar from "../buttonbelownavbar/buttonbelownavbar";
+
 const HomePage = () => {
   const searchArrayData = useSelector((state) => state.video.searchVideos);
   const navigate = useNavigate();
@@ -64,86 +66,47 @@ const HomePage = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container">
-          <a className="navbar-brand" href="#">
-            Your Logo
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Recommended
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Trending
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Music
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Mix
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Web Development
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <ButtonBelowNavbar></ButtonBelowNavbar>
       <div className="container mb-5">
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {recommendedVideos.map((video) => (
             <div key={Math.random()} className="col">
-              <div className="video-card rounded p-3 border h-100">
-                <img
-                  src={video.snippet.thumbnails.high.url} // Use high quality thumbnail
-                  className="video-thumbnail img-fluid rounded"
-                  alt={video.snippet.title}
-                />
-                <div className="video-details mt-3">
-                  <div className="channel-logo">
-                    {video.snippet.channelLogoUrl && (
-                      <img
-                        src={video.snippet.channelLogoUrl}
-                        alt={video.snippet.channelTitle}
-                        className="channel-logo-img rounded-circle"
-                      />
-                    )}
-                  </div>
-                  <div className="video-info ml-3">
-                    <h5 className="video-title">{video.snippet.title}</h5>
-                    <a
-                      href={`https://www.youtube.com/watch?v=${video.id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary"
-                    >
-                      Watch Video
-                    </a>
+              <a
+                href={`https://www.youtube.com/watch?v=${video.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="video-link"
+              >
+                <div className="video-card rounded p-3 border h-100">
+                  <img
+                    src={video.snippet.thumbnails.high.url}
+                    className="video-thumbnail img-fluid rounded"
+                    alt={video.snippet.title}
+                  />
+                  <div className="video-details mt-3">
+                    <div className="channel-logo">
+                      {video.snippet.channelLogoUrl && (
+                        <img
+                          src={video.snippet.channelLogoUrl}
+                          alt={video.snippet.channelTitle}
+                          className="channel-logo-img rounded-circle"
+                        />
+                      )}
+                    </div>
+                    <div className="video-info ml-1">
+                      <h5 className="video-title">{video.snippet.title}</h5>
+
+                      <button
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary"
+                      >
+                        Watch Video
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           ))}
         </div>
