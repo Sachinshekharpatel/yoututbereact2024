@@ -20,20 +20,25 @@ const Navbar = () => {
   }, [navigate, token]);
   const handleSearch = (e) => {
     e.preventDefault();
-    const searchQuery = searchRef.current.value;
-    const apiKey = "AIzaSyCmPDIvI1U_KaOkhylVk4bTIStAmwquxwk";
+    const searchQuery = searchRef.current.value.trim();
+   if(searchQuery.length>0){
+    const searchQuery = searchRef.current.value.trim();
+    const apiKey = "AIzaSyCIfHsLh1_aQLeZMZkZTcgX4NqyPeHePv8";
 
     const requestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=21&q=${searchQuery}&type=video&videoDuration=long&key=${apiKey}`;
 
     axios
       .get(requestUrl)
       .then((response) => {
+        localStorage.setItem("searchQuery", true);
         dispatch(searchVideo.SearchVideosFunction(response.data.items)); 
         console.log("Searched videos:", response.data.items);
+        searchRef.current.value='';
       })
       .catch((error) => {
         console.error("Error fetching searched videos:", error);
       });
+   }
   };
 
   return (
@@ -54,7 +59,7 @@ const Navbar = () => {
                   placeholder="Search videos"
                 />
                 <div className="input-group-append">
-                  <button onClick={handleSearch} className="btn btn-primary" type="button">
+                  <button onClick={handleSearch} className="btn btn-success" type="button">
                     Search
                   </button>
                 </div>
@@ -62,6 +67,8 @@ const Navbar = () => {
               <Link
                 onClick={() => {
                   localStorage.removeItem("token");
+                  localStorage.removeItem("searchQuery");
+                  localStorage.removeItem("videoDetail");
                   navigate("/loginpage");
                 }}
                 className="btn btn-danger ml-3"

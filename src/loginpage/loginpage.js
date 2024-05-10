@@ -6,7 +6,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  const [errorModal, setErrorModal] = useState(false);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,7 +83,7 @@ const LoginPage = () => {
                 </button>
                 <div>
                   Dont have an account?
-                  <Link to="/signup"> Signup here</Link>
+                  <Link to="/signuppage"> Signup here</Link>
                 </div>
               </form>
             </div>

@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./homepage.css";
 import ButtonBelowNavbar from "../buttonbelownavbar/buttonbelownavbar";
-
+import { Link } from "react-router-dom";
+import { searchVideo } from "../reduxreducer/reduxreducer";
 const HomePage = () => {
+  const searchVideoBoolean = useSelector((state) => state.video.searchVideoBoolean);
   const searchArrayData = useSelector((state) => state.video.searchVideos);
   const navigate = useNavigate();
   const [recommendedVideos, setRecommendedVideos] = useState([]);
   const token = localStorage.getItem("token") || null;
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    if (token === null) {
-      navigate("/loginpage");
-    } else {
-      navigate("/");
-    }
-
-    const apiKey = "AIzaSyCmPDIvI1U_KaOkhylVk4bTIStAmwquxwk";
+   
+    const apiKey = "AIzaSyCIfHsLh1_aQLeZMZkZTcgX4NqyPeHePv8";
 
     const requestUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=21&key=${apiKey}`;
 
@@ -64,6 +61,12 @@ const HomePage = () => {
     setRecommendedVideos(searchArrayData);
   }, [searchArrayData]);
 
+  const watchVideoBtnHandler = (videoDetail) => {
+    navigate(`/watchVideoPage`);
+    console.log(videoDetail);
+    localStorage.setItem("videoDetail", JSON.stringify(videoDetail));
+    dispatch(searchVideo.VideoIdFunction(videoDetail));
+  };
   return (
     <div>
       <ButtonBelowNavbar></ButtonBelowNavbar>
@@ -71,19 +74,14 @@ const HomePage = () => {
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {recommendedVideos.map((video) => (
             <div key={Math.random()} className="col">
-              <a
-                href={`https://www.youtube.com/watch?v=${video.id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="video-link"
-              >
-                <div className="video-card rounded p-3 border h-100">
-                  <img
-                    src={video.snippet.thumbnails.high.url}
-                    className="video-thumbnail img-fluid rounded"
-                    alt={video.snippet.title}
-                  />
-                  <div className="video-details mt-3">
+              <div className="video-card rounded border h-100">
+                <img
+                  src={video.snippet.thumbnails.high.url}
+                  className="video-thumbnail img-fluid rounded"
+                  alt={video.snippet.title}
+                />
+                <div className="video-details p-3">
+                  <div className="d-flex align-items-center mb-2">
                     <div className="channel-logo">
                       {video.snippet.channelLogoUrl && (
                         <img
@@ -93,20 +91,18 @@ const HomePage = () => {
                         />
                       )}
                     </div>
-                    <div className="video-info ml-1">
-                      <h5 className="video-title">{video.snippet.title}</h5>
-
-                      <button
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-primary"
-                      >
-                        Watch Video
-                      </button>
-                    </div>
+                    <h5 className="video-title mb-0 ml-2">
+                      {video.snippet.title}
+                    </h5>
                   </div>
                 </div>
-              </a>
+                <button
+                  className="btn btn-success btn-sm watch-btn"
+                  onClick={() => watchVideoBtnHandler(video)}
+                >
+                  Watch Video
+                </button>
+              </div>
             </div>
           ))}
         </div>

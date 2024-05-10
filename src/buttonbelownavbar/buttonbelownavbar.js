@@ -8,8 +8,9 @@ import { useNavigate } from "react-router-dom";
 function ButtonBelowNavbar() {
    const navigate = useNavigate();
     const dispatch = useDispatch();
+    const apiKey = "AIzaSyCIfHsLh1_aQLeZMZkZTcgX4NqyPeHePv8";
   const HandleShorts = () => {
-    const apiKey = "AIzaSyCmPDIvI1U_KaOkhylVk4bTIStAmwquxwk";
+   
     const requestUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=20&regionCode=IN&videoCategoryId=24&type=video&key=${apiKey}`;
 
     axios
@@ -24,7 +25,7 @@ function ButtonBelowNavbar() {
       });
   };
   const Handletech = () => {
-    const apiKey = "AIzaSyCmPDIvI1U_KaOkhylVk4bTIStAmwquxwk";
+    // const apiKey = "AIzaSyCIfHsLh1_aQLeZMZkZTcgX4NqyPeHePv8";
     const requestUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=21&regionCode=IN&type=video&videoCategoryId=28&key=${apiKey}`;
 
     axios
@@ -39,7 +40,7 @@ function ButtonBelowNavbar() {
       });
   };
   const HandleMusic = () => {
-    const apiKey = "AIzaSyCmPDIvI1U_KaOkhylVk4bTIStAmwquxwk";
+    // const apiKey = "AIzaSyCIfHsLh1_aQLeZMZkZTcgX4NqyPeHePv8";
     const requestUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=20&regionCode=IN&type=video&videoCategoryId=10&key=${apiKey}`;
     axios
       .get(requestUrl)
@@ -54,7 +55,7 @@ function ButtonBelowNavbar() {
   };
 
   const HandleTrending = () => {
-    const apiKey = "AIzaSyCmPDIvI1U_KaOkhylVk4bTIStAmwquxwk";
+    // const apiKey = "AIzaSyCIfHsLh1_aQLeZMZkZTcgX4NqyPeHePv8";
     const requestUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=20&regionCode=IN&type=video&key=${apiKey}`;
     axios
       .get(requestUrl)
@@ -71,7 +72,7 @@ function ButtonBelowNavbar() {
   const HandleMix = () => {
     const categories = ["music", "sports", "news", "entertainment"]; // List of categories to include in the mix
 
-    const apiKey = "AIzaSyCmPDIvI1U_KaOkhylVk4bTIStAmwquxwk";
+    // const apiKey = "AIzaSyCIfHsLh1_aQLeZMZkZTcgX4NqyPeHePv8";
     const requestUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=21&regionCode=IN&type=video&videoCategoryId=${[
       Math.floor(Math.random() * categories.length),
     ]}&key=${apiKey}`;

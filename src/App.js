@@ -7,7 +7,7 @@ import HomePage from './Homepage/homepage';
 import LoginPage from './loginpage/loginpage';
 import Navbar from './Homepage/navbar';
 import WatchVideo from './watchvideopage/watchVideo';
-//Youtube api key 'AIzaSyCmPDIvI1U_KaOkhylVk4bTIStAmwquxwk'
+//Youtube api key 'AIzaSyCIfHsLh1_aQLeZMZkZTcgX4NqyPeHePv8'
 function App() {
   return (
     <Router>
@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/loginpage" element={<LoginPage/>} />
-        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/signuppage" element={<SignupPage />} />
         <Route path="/watchVideoPage" element={<WatchVideo />} />
       </Routes>
     </div>

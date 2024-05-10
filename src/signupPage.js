@@ -39,7 +39,7 @@ const SignupPage = () => {
         )
         .then((response) => {
           console.log("User signed up successfully:", response.data);
-          navigate("/loginpage");
+          // navigate("/loginpage");
         })
         .catch((error) => {
           console.error("Error signing up user:", error.response.data.error);

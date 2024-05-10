@@ -1,4 +1,53 @@
 /* General Styles */
+.buttonWatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #88a892;
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  background: linear-gradient(30deg, rgb(16, 14, 14) 20%, rgb(176, 170, 118) 80%);
+  transition: all 0.3s ease-in-out 0s;
+  box-shadow: rgba(95, 123, 105, 0.698) 0px 0px 0px 0px;
+  animation: 1.2s cubic-bezier(0.8, 0, 0, 1) 0s infinite normal none running pulse;
+  align-items: center;
+  border: 0;
+}
+
+.buttonWatch:is(:hover, :focus) {
+  transform: scale(1.2);
+}
+
+@keyframes pulse {
+  100% {
+    box-shadow: 0 0 0 45px rgba(193,244,246,0);
+  }
+}
+.video-card {
+  height: 350px;
+}
+
+.video-thumbnail {
+  height: 200px;
+  object-fit: cover;
+}
+
+.video-details {
+  height: calc(100% - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.channel-logo-img {
+  width: 36px;
+  height: 36px;
+}
+
+.watch-btn {
+  align-self: flex-end;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
