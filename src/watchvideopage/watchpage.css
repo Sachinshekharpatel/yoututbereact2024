@@ -1,63 +1,89 @@
+/* Adjustments to existing styles */
 .channel-logo {
-    width: 48px;
-    height: 48px;
-  }
-  
-  .channel-title {
-    font-weight: bold;
-  }
-  
-  .published-date {
-    font-size: 0.9rem;
-  }
-  
-  .video-title {
-    font-weight: bold;
-  }
-  
-  .video-card {
-    height: 100%;
-  }
-  
+  width: 48px;
+  height: 48px;
+}
+
+.channel-title {
+  font-weight: bold;
+}
+
+.published-date {
+  font-size: 0.9rem;
+}
+
+.video-title {
+  font-weight: bold;
+}
+
+.video-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.video-thumbnail {
+  max-height: 150px;
+  object-fit: cover;
+}
+
+.channel-logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.video-details {
+  flex-grow: 1;
+  padding: 8px;
+}
+
+.btn-watch-video {
+  background-color: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-watch-video:hover {
+  background-color: #0b5ed7;
+}
+
+/* New styles for responsiveness */
+@media (max-width: 992px) {
   .video-thumbnail {
-    max-height: 150px;
-    object-fit: cover;
+    max-height: 120px;
   }
-  
-  .channel-logo-img {
+}
+
+@media (max-width: 768px) {
+  .video-thumbnail {
+    max-height: 100px;
+  }
+
+  .video-card {
+    height: auto;
+  }
+
+  .channel-logo {
     width: 36px;
     height: 36px;
   }
-  
-  .video-info {
-    flex-grow: 1;
-  }
-  
-  
+}
 
-  .buttonWatch {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #808891;
-    width: 80px;
-    height: 80px;
-    border-radius: 100%;
-    background: linear-gradient(30deg, rgb(26, 24, 21) 20%, rgb(116, 51, 39) 80%);
-    transition: all 0.3s ease-in-out 0s;
-    box-shadow: rgba(193, 244, 246, 0.698) 0px 0px 0px 0px;
-    animation: 1.2s cubic-bezier(0.8, 0, 0, 1) 0s infinite normal none running pulse;
-    align-items: center;
-    border: 0;
+@media (max-width: 576px) {
+  .video-thumbnail {
+    max-height: 80px;
   }
-  
-  .buttonWatch:is(:hover, :focus) {
-    transform: scale(1.2);
+
+  .video-details {
+    padding: 4px;
   }
-  
-  @keyframes pulse {
-    100% {
-      box-shadow: 0 0 0 45px rgba(193,244,246,0);
-    }
-  }
-  
+}

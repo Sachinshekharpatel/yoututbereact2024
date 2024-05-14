@@ -1,0 +1,12 @@
+.login-page {
+    background-image: linear-gradient(112.5deg, rgb(214, 214, 214) 0%, rgb(214, 214, 214) 10%, rgb(171,156,156) 10%, rgb(171,156,156) 53%, rgb(176, 176, 176) 53%, rgb(176, 176, 176) 55%, rgb(157, 157, 157) 55%, rgb(157, 157, 157) 60%, rgb(137, 137, 137) 60%, rgb(137, 137, 137) 88%, rgb(118, 118, 118) 88%, rgb(118, 118, 118) 91%, rgb(51,43,43) 91%, rgb(51,43,43) 100%),linear-gradient(157.5deg, rgb(214, 214, 214) 0%, rgb(214, 214, 214) 10%, rgb(171,156,156) 10%, rgb(171,156,156) 53%, rgb(176, 176, 176) 53%, rgb(176, 176, 176) 55%, rgb(157, 157, 157) 55%, rgb(157, 157, 157) 60%, rgb(137, 137, 137) 60%, rgb(137, 137, 137) 88%, rgb(118, 118, 118) 88%, rgb(118, 118, 118) 91%, rgb(51,43,43) 91%, rgb(51,43,43) 100%),linear-gradient(135deg, rgb(214, 214, 214) 0%, rgb(214, 214, 214) 10%, rgb(171,156,156) 10%, rgb(171,156,156) 53%, rgb(176, 176, 176) 53%, rgb(176, 176, 176) 55%, rgb(157, 157, 157) 55%, rgb(157, 157, 157) 60%, rgb(137, 137, 137) 60%, rgb(137, 137, 137) 88%, rgb(118, 118, 118) 88%, rgb(118, 118, 118) 91%, rgb(51,43,43) 91%, rgb(51,43,43) 100%),linear-gradient(90deg, rgb(171,156,156),rgb(228, 228, 228)); 
+    background-blend-mode: overlay, overlay, overlay, normal;
+    min-height: 100vh; /* Set minimum height to fill the entire viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sachintube-text {
+    color: #FF0000; /* Replace with the YouTube brand color */
+  }
+  

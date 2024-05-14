@@ -6,12 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { searchVideo } from "../reduxreducer/reduxreducer";
 import axios from "axios";
 import "./watchpage.css";
+import Navbar from "../Homepage/navbar";
+
 function WatchVideo() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const getsearchVideo = useSelector((state) => state.video.searchVideos);
   const videoDetail = JSON.parse(localStorage.getItem("videoDetail")) || null;
-  const [recommendedVideos, setRecommendedVideos] = useState([]);
+  const [recommendedVideos, setRecommendedVideos] = useState(null); // Changed to null
   const [videoIdToPlay, setVideoIdToPlay] = useState(null);
   const token = localStorage.getItem("token") || null;
   const channelLogo =
@@ -39,9 +41,8 @@ function WatchVideo() {
       .get(requestUrl)
       .then((response) => {
         setRecommendedVideos(response.data.items);
-
         console.log("Recommended videos:", response.data.items);
-
+        
         response.data.items.forEach((video, index) => {
           const channelId = video.snippet.channelId;
           const channelRequestUrl = `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=${apiKey}`;
@@ -89,7 +90,8 @@ function WatchVideo() {
 
   return (
     <div>
-      <ButtonBelowNavbar></ButtonBelowNavbar>
+      <Navbar />
+      <ButtonBelowNavbar />
       <div className="container my-5">
         <div className="row">
           <div className="col-lg-8">
@@ -100,7 +102,8 @@ function WatchVideo() {
               <img
                 src={channelLogo}
                 alt="Channel Logo"
-                className="rounded-circle channel-logo mr-3"
+                className="rounded-circle channel-logo mr-5"
+                style={{ height: "50px", width: "50px" }}
               />
               <div>
                 <h5 className="mb-0 channel-title">
@@ -115,7 +118,9 @@ function WatchVideo() {
               </div>
             </div>
             <div>
-              <h4 className="video-title">{videoDetail.snippet.title}</h4>
+              <h4 className="video-title mt-3">
+                {videoDetail.snippet.title}
+              </h4>
               <small className="text-muted published-date">
                 Description {videoDetail.snippet.description}
               </small>
@@ -125,7 +130,7 @@ function WatchVideo() {
       </div>
       <div className="container mb-5">
         <div className="row row-cols-1 row-cols-md-3 g-4">
-          {recommendedVideos.map((video) => (
+          {Array.isArray(recommendedVideos) && recommendedVideos.map((video) => (
             <div key={Math.random()} className="col">
               <div className="video-card rounded border h-100">
                 <img

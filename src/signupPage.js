@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import './signuppage.css'
 const SignupPage = () => {
   const navigate = useNavigate();
   const emailRef = useRef(null);
@@ -39,10 +40,11 @@ const SignupPage = () => {
         )
         .then((response) => {
           console.log("User signed up successfully:", response.data);
-          // navigate("/loginpage");
+          alert("User registered successfully");
+          navigate("/loginpage");
         })
         .catch((error) => {
-          console.error("Error signing up user:", error.response.data.error);
+          alert("Please Enter valid credentials");
         });
       emailRef.current.value = "";
       passwordRef.current.value = "";
@@ -53,56 +55,59 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card mt-5">
-            <div className="card-header">
-              <h4>Sign Up</h4>
-            </div>
-            <div className="card-body">
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="email">Email address</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    ref={emailRef}
-                    placeholder="Enter email"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    ref={passwordRef}
-                    placeholder="Password"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="confirmPassword">Confirm Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    ref={confirmPasswordRef}
-                    placeholder="Confirm Password"
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-block mt-2"
-                >
-                  Sign Up
-                </button>
-                <div>
-                  Already have an account?
-                  <Link to="/loginpage"> Login here</Link>
-                </div>
-              </form>
+    <div className="signup-page">
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-md-6">
+            <div className="card mt-5">
+              <div className="card-header">
+              <h4>Register To <span className="sachintube-text">SachinTube</span></h4>
+              </div>
+              <div className="card-body">
+                <form onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label htmlFor="email">Email address</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      ref={emailRef}
+                      placeholder="Enter email"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      ref={passwordRef}
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="confirmPassword">Confirm Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      ref={confirmPasswordRef}
+                      placeholder="Confirm Password"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="btn mt-2"
+                    style={{ backgroundColor: "#0d6efd", color: "white" }}
+                  >
+                    Sign Up
+                  </button>
+                  <div>
+                    Already have an account?
+                    <Link to="/loginpage"> Login here</Link>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>

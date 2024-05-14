@@ -4,8 +4,9 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import "./homepage.css";
 import ButtonBelowNavbar from "../buttonbelownavbar/buttonbelownavbar";
-import { Link } from "react-router-dom";
+
 import { searchVideo } from "../reduxreducer/reduxreducer";
+import Navbar from "./navbar";
 const HomePage = () => {
   const searchVideoBoolean = useSelector((state) => state.video.searchVideoBoolean);
   const searchArrayData = useSelector((state) => state.video.searchVideos);
@@ -69,6 +70,7 @@ const HomePage = () => {
   };
   return (
     <div>
+      <Navbar></Navbar>
       <ButtonBelowNavbar></ButtonBelowNavbar>
       <div className="container mb-5">
         <div className="row row-cols-1 row-cols-md-3 g-4">
